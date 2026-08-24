@@ -1,104 +1,89 @@
-# Ascii-studio
-Transforme imagens em arte ASCII animada diretamente no navegador.
+# ASCII Studio
 
-O ASCII Studio é uma ferramenta web que converte imagens em uma composição de caracteres de texto, permitindo personalizar a aparência, animação, cores e resolução da arte. O resultado pode ser exportado como uma página HTML independente ou como um GIF animado.
+<p align="center">
+  <img src="./miku.ico" width="80" alt="ASCII Studio">
+</p>
 
-Preview
+<h3 align="center">Transforme imagens em arte ASCII animada.</h3>
 
-Converta uma imagem em uma textura de texto animada.
+<p align="center">
+  Uma ferramenta web para converter imagens em composições de caracteres,
+  personalizar cores e animações e exportar o resultado como HTML ou GIF.
+</p>
 
-Live Demo: ASCII Studio
+<p align="center">
+  <a href="https://lscski-ascii-studio.netlify.app/">
+    <strong>Live Demo</strong>
+  </a>
+</p>
 
-Funcionalidades
-Conversão de imagens para ASCII Art
-Animação horizontal dos caracteres
-Personalização do padrão de caracteres
-Controle do tamanho da fonte
-Controle da velocidade da animação
-Ajuste da quantidade de colunas
-Correção de proporção da imagem
-Controle de brilho mínimo
-Suporte a:
-Cores originais da imagem
-Cor personalizada
-Controle da intensidade mínima dos caracteres
-Upload de imagens por arquivo ou arrastar e soltar
-Exportação da ASCII Art como arquivo HTML
-Exportação da animação como GIF
-Interface totalmente baseada em HTML, CSS e JavaScript
-Tecnologias
-HTML5
-CSS3
-JavaScript
-Canvas 2D API
-gif.js
-Web Workers
-Como funciona
+---
 
-O processo de conversão é realizado utilizando o Canvas 2D API.
+## Sobre o projeto
 
-O usuário envia uma imagem.
-A imagem é redimensionada para a quantidade de colunas definida.
-O Canvas analisa os pixels da imagem.
-O brilho de cada pixel é calculado utilizando os canais RGB.
-Cada pixel é convertido em um caractere do padrão definido.
-A cor e a transparência do caractere são determinadas a partir do pixel original.
-Os caracteres são renderizados novamente no Canvas.
-A animação é criada deslocando o padrão de caracteres horizontalmente.
+O **ASCII Studio** é uma ferramenta web desenvolvida para transformar imagens em **ASCII Art animada**, utilizando caracteres de texto para reproduzir os detalhes, cores e luminosidade da imagem original.
 
-A luminância utilizada na conversão é calculada aproximadamente como:
+O projeto utiliza a **Canvas 2D API** para processamento e renderização dos pixels, permitindo gerar a arte em tempo real diretamente no navegador.
 
-brightness = R × 0.299 + G × 0.587 + B × 0.114
-Exportação
-HTML
+A proposta é combinar uma interface minimalista com controles que permitem personalizar completamente o resultado final.
 
-A opção Baixar HTML do resultado gera uma página HTML independente contendo:
+---
 
-Canvas
-Imagem incorporada em Base64
-Configurações utilizadas
-Código JavaScript responsável pela animação
+## Funcionalidades
 
-Isso permite abrir o resultado posteriormente sem precisar do ASCII Studio original.
+- Conversão de imagens para ASCII Art
+- Animação dos caracteres
+- Personalização do padrão de caracteres
+- Controle do tamanho da fonte
+- Controle da velocidade da animação
+- Controle da quantidade de colunas
+- Correção de proporção da imagem
+- Controle do brilho mínimo
+- Suporte às cores originais da imagem
+- Suporte a cor personalizada
+- Controle da intensidade mínima dos caracteres
+- Upload de imagens
+- Drag and Drop
+- Exportação da arte como HTML
+- Exportação da animação como GIF
+- Processamento de GIF utilizando Web Worker
 
-GIF
+---
 
-A opção Gerar GIF utiliza o gif.js para capturar múltiplos frames da animação e gerar um GIF.
+## Controles
 
-O processamento utiliza um Web Worker para evitar bloquear a interface durante a renderização.
+| Controle | Descrição |
+|---|---|
+| **Padrão de texto** | Define os caracteres utilizados na arte |
+| **Tamanho da fonte** | Ajusta o tamanho dos caracteres |
+| **Velocidade de rolagem** | Controla a velocidade da animação |
+| **Colunas** | Define a resolução horizontal da ASCII Art |
+| **Correção de proporção** | Ajusta a proporção dos caracteres |
+| **Limiar mínimo de brilho** | Remove pixels abaixo de determinado brilho |
+| **Cor real** | Mantém as cores originais da imagem |
+| **Cor fixa** | Utiliza uma única cor para toda a arte |
+| **Intensidade mínima** | Define a transparência mínima dos caracteres |
 
-Estrutura
-ASCII-Studio/
-├── index.html
-├── gif.worker.js
-├── miku.ico
-└── README.md
-Executando localmente
+---
 
-Clone o repositório:
+## Como funciona
 
-git clone https://github.com/lscski/ascii-studio.git
+O processo de conversão utiliza o **Canvas 2D API** para analisar os pixels da imagem.
 
-Entre na pasta:
+### 1. Upload
 
-cd ascii-studio
+O usuário fornece uma imagem através do upload ou arrastando o arquivo para a área indicada.
 
-Depois abra o index.html no navegador ou utilize uma extensão como Live Server no VS Code.
+### 2. Redimensionamento
 
-Deploy
+A imagem é redimensionada de acordo com a quantidade de colunas selecionada.
 
-O projeto pode ser hospedado diretamente em serviços de hospedagem estática, como o Netlify.
+### 3. Análise dos pixels
 
-Live: lscski-ascii-studio.netlify.app
+Cada pixel é analisado individualmente para obter seus valores:
 
-Autor
-
-Desenvolvido por @lscski.
-
-Redes sociais
-X: @lscski
-Instagram: @lascoski__
-Discord: lscsk
-Licença
-
-Este projeto está disponível para fins de estudo e uso pessoal. Consulte o repositório para informações adicionais sobre licença e distribuição.
+```text
+R = Red
+G = Green
+B = Blue
+A = Alpha
